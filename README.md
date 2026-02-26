@@ -52,5 +52,22 @@ group <- factor(sample_groups)  # e.g., c("Control", "Case", ...)
 classcol <- c("Control" = "blue", "Case" = "red")[group]
 
 # Heatmap colors and breaks
+
+## Example: mtp9 clinical heatmap
+
+The script `main_mtp9_heatmap.R` provides a concrete example of how to
+use `heatmap.3` with a clinical or expression matrix.
+
+### Expected input
+
+- `mtp9.csv`: a comma‑separated file where
+  - rows = features (e.g., genes or clinical variables),
+  - first column = row names (feature IDs),
+  - remaining columns = samples.
+
+The script currently selects the first 47 samples:
+
+```r
+mtp9 <- mtp9[, 1:47, drop = FALSE]
 mycol <- colorRampPalette(c("blue", "white", "red"))(50)
 pairs.breaks <- seq(-3, 3, length.out = 51)
